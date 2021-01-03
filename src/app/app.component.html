@@ -1,0 +1,69 @@
+<div>
+  <h2>Drug Form</h2>
+  <form [formGroup]="form" (ngSubmit)="form.valid && submit()">
+    <div class="inputgroup">
+      <label>Batch Code*</label>
+      <input type="text" (blur)="checkAvailableBatch()" formControlName="BatchCode"><br>
+    </div>
+    <div class="inputgroup">
+      <label>Expiry Date*</label>
+      <input type="date" formControlName="ExpiryDate"><br>
+    </div>
+    <div class="inputgroup">
+      <label>Price*</label>
+      <input type="number" formControlName="Price"><br>
+    </div>
+    <div class="inputgroup">
+      <label>Drug Code*</label>
+      <input type="text" formControlName="DrugCode"><br>
+    </div>
+    <div class="inputgroup">
+      <label>Strip No.*</label>
+      <input type="text" formControlName="Strip"><br>
+    </div>
+    <div class="inputgroup">
+      <label>F_Comp*</label>
+      <input type="text" formControlName="Fcomp"><br>
+    </div>
+    <small style="text-align: center;display: block;" *ngIf="!form.valid && form.touched">*Batch code must be 8
+      character long, all fields required</small>
+    <div class="btn-group">
+      <button class="btn" type="submit">{{isUpdate ? "Update" : "Add"}}</button>
+      <button class="btn" type="reset" (click)="reset()">Reset</button>
+    </div>
+  </form>
+
+  <h2>Inventory</h2>
+  <div class="serch-group">
+    <input type="text" (keyup)="filterValue = inputFilter.value" #inputFilter
+      placeholder="Search "> by 
+    <button type="button" (click)="setFilter('Fcomp')">FComp</button>
+    <button type="button" (click)="setFilter('DrugCode')">DrugCode</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th class="pointer" (click)="setSorting('BatchCode')">Batch Code</th>
+        <th class="pointer" (click)="setSorting('DrugCode')">Drug Code</th>
+        <th class="pointer" (click)="setSorting('Fcomp')">F_Comp</th>
+        <th class="pointer" (click)="setSorting('Price')">Price(Rs.)</th>
+        <th class="pointer" (click)="setSorting('Strip')">Strip</th>
+        <th class="pointer" (click)="setSorting('ExpiryDate')">Expiry Date</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of availableDrugList | filter:filterValue:filterKey | sort:sortingKey:sortingOrder">
+        <td>{{item?.BatchCode}}</td>
+        <td>{{item?.DrugCode}}</td>
+        <td>{{item?.Fcomp}}</td>
+        <td>{{item?.Price}}</td>
+        <td>{{item?.Strip}}</td>
+        <td>{{item?.ExpiryDate | date:"dd/MM/yyyy"}}</td>
+        <td class="pointer" (click)="deleteDrug(item)">Delete</td>
+        <td class="pointer" (click)="updateDrugInfo(item)">Update</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

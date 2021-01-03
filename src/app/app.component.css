@@ -1,0 +1,68 @@
+.container{
+    overflow-y: scroll;
+}
+h2{
+    text-align: center;
+}
+form{
+    display: block;
+    margin: auto;
+    max-width: 600px;
+    /* border: 1px solid black; */
+}
+.inputgroup{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.inputgroup *{
+    display: inline-block;
+}
+label{
+    width: 200px;
+    text-align: left;
+    display: inline-block;
+}
+input{
+    width: 200px;
+    margin-bottom: 10px;
+}
+table{
+    border-collapse: collapse;
+    display: block;
+    margin: auto;
+    max-width: 600px;
+}
+table th{
+    /* cursor: pointer; */
+    background-color: aquamarine;
+}
+.pointer{
+    cursor: pointer;
+}
+.btn-group{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.btn-group *{
+    display: inline;
+    margin: 10px;
+}
+button{
+    display: block;
+    margin: 0 auto;
+}
+table *{
+    text-align: center;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+.serch-group{
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+}
+.serch-group *{
+    display: inline-block; 
+}
